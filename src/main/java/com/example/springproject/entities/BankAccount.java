@@ -17,6 +17,7 @@ public class BankAccount {
     private String id;
     private double balance;
     private Date createdAt;
+    @Enumerated(EnumType.STRING)// pour qu'il ne soit pas enrigester sous forme 0 , 1 ,2
     private AccountStatus Status;
     @ManyToOne
     // plusieurs comptes pour un client
