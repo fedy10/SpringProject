@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 import java.util.List;
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)//pour l'heritage
+@Inheritance(strategy = InheritanceType.JOINED)//pour l'heritage
 //@DiscriminatorColumn(name = "TYPE",length = 4,discriminatorType = DiscriminatorType.STRING)
 @Data @NoArgsConstructor @AllArgsConstructor
-public abstract class BankAccount {
+public class BankAccount {
     //abstract pour ne pas creer un table bankAccount
     @Id
     private String id;
