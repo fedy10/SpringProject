@@ -1,9 +1,11 @@
 package com.example.springproject;
 
+import com.example.springproject.entities.AccountOperation;
 import com.example.springproject.entities.CurrentAccount;
 import com.example.springproject.entities.Customer;
 import com.example.springproject.entities.SavingAccount;
 import com.example.springproject.enums.AccountStatus;
+import com.example.springproject.enums.OperationType;
 import com.example.springproject.reposiitories.AccountOperationRepository;
 import com.example.springproject.reposiitories.BankAccountRepository;
 import com.example.springproject.reposiitories.CustomerRepository;
@@ -52,6 +54,18 @@ public class SpringProjectApplication {
                 savingAccount.setCustomer(cust);
                 savingAccount.setInterestRate(9000);
                 bankAccountRepository.save(savingAccount);
+            });
+
+            // pour ajouter des operation ;
+            bankAccountRepository.findAll().forEach(acc->{
+                for (int i =0;i<5;i++){
+                    AccountOperation accountOperation=new AccountOperation();
+                    accountOperation.setOperationDate(new Date());
+                    accountOperation.setAmount(Math.random()*1200);
+                    accountOperation.setType(Math.random()>0.5? OperationType.DEBIT:OperationType.CREDIT);
+                    accountOperation.setBankAccount(acc);
+                    accountOperationRepository.save(accountOperation);
+                }
             });
         };
     }
