@@ -23,6 +23,6 @@ public class BankAccount {
     @ManyToOne
     // plusieurs comptes pour un client
     private Customer customer;
-    @OneToMany (mappedBy = "bankAccount",fetch = FetchType.EAGER)
+    @OneToMany (mappedBy = "bankAccount",fetch = FetchType.LAZY)
     private List<AccountOperation> accountOperations;
 }

@@ -6,6 +6,7 @@ import com.example.springproject.enums.OperationType;
 import com.example.springproject.reposiitories.AccountOperationRepository;
 import com.example.springproject.reposiitories.BankAccountRepository;
 import com.example.springproject.reposiitories.CustomerRepository;
+import com.example.springproject.services.BankService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,30 +25,9 @@ public class SpringProjectApplication {
 
    @Bean
     // on va creer un nouvelle methode pour consulter les comptess
-    CommandLineRunner consultercompte( BankAccountRepository bankAccountRepository){
+    CommandLineRunner consultercompte(BankService bankService){
         return args -> {
-            // Pour consulter un compte:
-            BankAccount bankAccount=bankAccountRepository.findById("24d8d982-00e0-4d12-95a0-083b0f0be84c").orElse(null);
-
-            if(bankAccount!=null){
-                System.out.println("***********************");
-                System.out.println(bankAccount.getId());
-                System.out.println(bankAccount.getBalance());
-                System.out.println(bankAccount.getStatus());
-                System.out.println(bankAccount.getCustomer().getName());
-                System.out.println(bankAccount.getClass().getSimpleName());// pour afficher la classe : courant / saving
-                if(bankAccount instanceof CurrentAccount){
-                    System.out.println( "over Dradft :" +((CurrentAccount) bankAccount).getOverDraft());;
-                }
-                else if(bankAccount instanceof SavingAccount){
-                    System.out.println( "Rate :"+((SavingAccount) bankAccount).getInterestRate());;
-                }
-                // pour afficher les operation de ce compte :
-                bankAccount.getAccountOperations().forEach(opreation->{
-                    System.out.println("-----------------------");
-                    System.out.println(opreation.getType() +"\t" +opreation.getOperationDate()+"\t"+opreation.getAmount());
-                });
-            }
+            bankService.consulter();
         };
     }
     //@Bean //une fois on met l'annotation comme commentaire ou on la suprime la methode ne sera jamais executer
