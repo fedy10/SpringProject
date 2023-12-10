@@ -1,9 +1,6 @@
 package com.example.springproject;
 
-import com.example.springproject.entities.AccountOperation;
-import com.example.springproject.entities.CurrentAccount;
-import com.example.springproject.entities.Customer;
-import com.example.springproject.entities.SavingAccount;
+import com.example.springproject.entities.*;
 import com.example.springproject.enums.AccountStatus;
 import com.example.springproject.enums.OperationType;
 import com.example.springproject.reposiitories.AccountOperationRepository;
@@ -25,7 +22,35 @@ public class SpringProjectApplication {
         SpringApplication.run(SpringProjectApplication.class, args);
     }
 
-    @Bean
+   @Bean
+    // on va creer un nouvelle methode pour consulter les comptess
+    CommandLineRunner consultercompte( BankAccountRepository bankAccountRepository){
+        return args -> {
+            // Pour consulter un compte:
+            BankAccount bankAccount=bankAccountRepository.findById("24d8d982-00e0-4d12-95a0-083b0f0be84c").orElse(null);
+
+            if(bankAccount!=null){
+                System.out.println("***********************");
+                System.out.println(bankAccount.getId());
+                System.out.println(bankAccount.getBalance());
+                System.out.println(bankAccount.getStatus());
+                System.out.println(bankAccount.getCustomer().getName());
+                System.out.println(bankAccount.getClass().getSimpleName());// pour afficher la classe : courant / saving
+                if(bankAccount instanceof CurrentAccount){
+                    System.out.println( "over Dradft :" +((CurrentAccount) bankAccount).getOverDraft());;
+                }
+                else if(bankAccount instanceof SavingAccount){
+                    System.out.println( "Rate :"+((SavingAccount) bankAccount).getInterestRate());;
+                }
+                // pour afficher les operation de ce compte :
+                bankAccount.getAccountOperations().forEach(opreation->{
+                    System.out.println("-----------------------");
+                    System.out.println(opreation.getType() +"\t" +opreation.getOperationDate()+"\t"+opreation.getAmount());
+                });
+            }
+        };
+    }
+    //@Bean //une fois on met l'annotation comme commentaire ou on la suprime la methode ne sera jamais executer
     CommandLineRunner start(CustomerRepository customerRepository,
                             BankAccountRepository bankAccountRepository,
                             AccountOperationRepository accountOperationRepository){
@@ -58,11 +83,11 @@ public class SpringProjectApplication {
 
             // pour ajouter des operation ;
             bankAccountRepository.findAll().forEach(acc->{
-                for (int i =0;i<5;i++){
-                    AccountOperation accountOperation=new AccountOperation();
+                for (int i =0;i<5;i++) {
+                    AccountOperation accountOperation = new AccountOperation();
                     accountOperation.setOperationDate(new Date());
-                    accountOperation.setAmount(Math.random()*1200);
-                    accountOperation.setType(Math.random()>0.5? OperationType.DEBIT:OperationType.CREDIT);
+                    accountOperation.setAmount(Math.random() * 1200);
+                    accountOperation.setType(Math.random() > 0.5 ? OperationType.DEBIT : OperationType.CREDIT);
                     accountOperation.setBankAccount(acc);
                     accountOperationRepository.save(accountOperation);
                 }
