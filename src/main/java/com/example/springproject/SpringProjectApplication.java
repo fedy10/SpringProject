@@ -1,5 +1,6 @@
 package com.example.springproject;
 
+import com.example.springproject.dtos.CustomerDTO;
 import com.example.springproject.entities.*;
 import com.example.springproject.enums.AccountStatus;
 import com.example.springproject.enums.OperationType;
@@ -39,7 +40,7 @@ public class SpringProjectApplication {
     CommandLineRunner start(BankAccountService bankAccountService){
         return args -> {
             Stream.of("fedy","maynou","akrouta").forEach(name->{
-                Customer customer=new Customer();
+                CustomerDTO customer=new CustomerDTO();
                 customer.setName(name);
                 customer.setEmail(name+"@gmail.com");
                 bankAccountService.saveCustomer(customer);
