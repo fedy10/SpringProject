@@ -1,6 +1,9 @@
 package com.example.springproject.services;
 
+import com.example.springproject.dtos.BankAccountDTO;
+import com.example.springproject.dtos.CurrentBankAccountDTO;
 import com.example.springproject.dtos.CustomerDTO;
+import com.example.springproject.dtos.SavingBankAccountDTO;
 import com.example.springproject.entities.BankAccount;
 import com.example.springproject.entities.CurrentAccount;
 import com.example.springproject.entities.Customer;
@@ -12,20 +15,19 @@ import com.example.springproject.exception.CustomerNotFoundException;
 import java.util.List;
 
 public interface BankAccountService {
-    CustomerDTO saveCustomer (CustomerDTO customer);
 
-    CustomerDTO updateCustomer(CustomerDTO customerDTO);
 
-    void deleteCustomer(Long customerId);
+    CurrentBankAccountDTO saveCurrentBankAccount(double initialBalance, double overDraft, Long customerID) throws CustomerNotFoundException;
 
-    CurrentAccount saveCurrentBankAccount(double initialBalance , double overDraft , Long customerID) throws CustomerNotFoundException;
-    SavingAccount saveSavingBankAccount(double initialBalance , double interestRate , Long customerID) throws CustomerNotFoundException;
-    List<CustomerDTO> ListCustomers();
-    BankAccount getBankAccount(String acountId) throws BankAccountNotFoundException;
-    void debit(String accountId , double amount ,String description) throws BankAccountNotFoundException, BalanceNotSufficientException;
-    void credit(String accountId , double amount ,String description) throws BankAccountNotFoundException;
-    void transfer(String accountIdSource , String accountIdDestination , double amount) throws BankAccountNotFoundException, BalanceNotSufficientException;
-    List<BankAccount> bankAccountList();
+    CurrentBankAccountDTO updateCurrentBankAccount(double initialBalance, double overDraft, Long customerID) throws CustomerNotFoundException;
 
-    CustomerDTO getCustomer(Long customerId) throws CustomerNotFoundException;
+    SavingBankAccountDTO saveSavingBankAccount(double initialBalance, double intersetRate, Long customerID) throws CustomerNotFoundException;
+
+    SavingBankAccountDTO updateSavingBankAccount(double initialBalance, double intersetRate, Long customerID) throws CustomerNotFoundException;
+
+    BankAccountDTO getBankAccount(String acountId) throws BankAccountNotFoundException;
+    List<BankAccountDTO> bankAccountList();
+
+    void deleteBankAccount(String customerId);
+
 }

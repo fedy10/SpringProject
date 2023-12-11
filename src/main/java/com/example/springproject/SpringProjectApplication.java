@@ -1,6 +1,8 @@
 package com.example.springproject;
 
+import com.example.springproject.dtos.BankAccountDTO;
 import com.example.springproject.dtos.CustomerDTO;
+import com.example.springproject.dtos.SavingBankAccountDTO;
 import com.example.springproject.entities.*;
 import com.example.springproject.enums.AccountStatus;
 import com.example.springproject.enums.OperationType;
@@ -10,8 +12,8 @@ import com.example.springproject.exception.CustomerNotFoundException;
 import com.example.springproject.reposiitories.AccountOperationRepository;
 import com.example.springproject.reposiitories.BankAccountRepository;
 import com.example.springproject.reposiitories.CustomerRepository;
-import com.example.springproject.services.BankAccountService;
-import com.example.springproject.services.BankService;
+import com.example.springproject.services.*;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -37,16 +39,16 @@ public class SpringProjectApplication {
         };
     }
     @Bean //une fois on met l'annotation comme commentaire ou on la suprime la methode ne sera jamais executer
-    CommandLineRunner start(BankAccountService bankAccountService){
+    CommandLineRunner start(CustomerServiceImpl customerService , BankAccountServiceImpl bankAccountService , AccountOperationServiceImpl accountOperationService){
         return args -> {
             Stream.of("fedy","maynou","akrouta").forEach(name->{
                 CustomerDTO customer=new CustomerDTO();
                 customer.setName(name);
                 customer.setEmail(name+"@gmail.com");
-                bankAccountService.saveCustomer(customer);
+                customerService.saveCustomer(customer);
             });
             //
-            bankAccountService.ListCustomers().forEach(customer -> {
+            customerService.ListCustomers().forEach(customer -> {
                 try {
                     bankAccountService.saveCurrentBankAccount(Math.random()*9000,900,customer.getId());
                     bankAccountService.saveSavingBankAccount(Math.random()*1200,5.5, customer.getId());
@@ -54,15 +56,15 @@ public class SpringProjectApplication {
                     e.printStackTrace();
                 }
             });
-            List<BankAccount> bankAccounts=bankAccountService.bankAccountList();
+            List<BankAccountDTO> bankAccounts=bankAccountService.bankAccountList();
             try{
-                for (BankAccount bankAccount:bankAccounts){
+                for (BankAccountDTO bankAccount:bankAccounts){
                     for(int i=0;i<5;i++){
-                        bankAccountService.credit(bankAccount.getId(),1000+Math.random()*1500,"credi");
+                        accountOperationService.credit(bankAccount.getId(),1000+Math.random()*1500,"credit");
 
                     }
                     for(int i=0;i<5;i++){
-                        bankAccountService.debit(bankAccount.getId(),100+Math.random()*1300,"credi");
+                        accountOperationService.debit(bankAccount.getId(),100+Math.random()*1300,"credit");
 
                     }
                 }
