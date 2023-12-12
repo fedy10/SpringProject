@@ -33,12 +33,13 @@ public class AccountOperationServiceImpl implements AccountOperationService {
 
     @Override
     public void debit(String accountId, double amount, String description) throws BankAccountNotFoundException, BalanceNotSufficientException {
-        BankAccount bankAccount= bankAccountService.getBanKAccount (accountId);
+        BankAccount bankAccount=bankAccountRepository.findById(accountId).orElseThrow(()->new BankAccountNotFoundException("BankAccount not found"));
         if(bankAccount.getBalance()<amount){
             throw  new BalanceNotSufficientException("Balance not sufficient");
         }
         AccountOperation accountOperation =new AccountOperation();
         accountOperation.setType(OperationType.DEBIT);
+        accountOperation.setAmount(amount);
         accountOperation.setDescription(description);
         accountOperation.setOperationDate(new Date());
         accountOperation.setBankAccount(bankAccount);
@@ -49,9 +50,12 @@ public class AccountOperationServiceImpl implements AccountOperationService {
     }
     @Override
     public void credit(String accountId, double amount, String description) throws BankAccountNotFoundException {
-        BankAccount bankAccount= bankAccountService.getBanKAccount (accountId);
+        System.out.println("/////////////////////////////////////////////////////////");
+        System.out.println(accountId);
+        BankAccount bankAccount=bankAccountRepository.findById(accountId).orElseThrow(()->new BankAccountNotFoundException("BankAccount not found"));
         AccountOperation accountOperation =new AccountOperation();
         accountOperation.setType(OperationType.CREDIT);
+        accountOperation.setAmount(amount);
         accountOperation.setDescription(description);
         accountOperation.setOperationDate(new Date());
         accountOperation.setBankAccount(bankAccount);

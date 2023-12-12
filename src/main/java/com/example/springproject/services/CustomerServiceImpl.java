@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 @Transactional
@@ -31,6 +32,8 @@ import java.util.stream.Collectors;
 public class CustomerServiceImpl implements CustomerService {
     private CustomerRepository customerRepository;
     private CustomerMapperImpl customerMapper;
+    private BankAccountRepository bankAccountRepository;
+    private AccountOperationRepository accountOperationRepository;
     @Override
     public CustomerDTO saveCustomer(CustomerDTO customerDTO) {
         Customer customer =customerMapper.fomCustomerDTO(customerDTO);
@@ -47,6 +50,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
     @Override
     public void deleteCustomer(Long customerId){
+        List<BankAccount> allByCustomerId = bankAccountRepository.findAllByCustomer_Id(customerId);
+        for (BankAccount bankAccount : allByCustomerId) {
+            String accountId = bankAccount.getId();
+            List<AccountOperation> accountOperations = accountOperationRepository.deleteAllByBankAccount_Id(accountId);
+        }
+        bankAccountRepository.deleteAllByCustomer_Id(customerId);
         customerRepository.deleteById(customerId);
     }
     @Override

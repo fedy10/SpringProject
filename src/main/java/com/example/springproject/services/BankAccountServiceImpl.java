@@ -109,11 +109,7 @@ public class BankAccountServiceImpl implements BankAccountService {
            return bankAccountMapper.fromCurrentAccount(currentAccount);
         }
     }
-    public   BankAccount getBanKAccount (String accountId) throws BankAccountNotFoundException{
-        BankAccount bankAccount=bankAccountRepository.findById(accountId).orElseThrow(()->new BankAccountNotFoundException("BankAccount not found"));
-        return bankAccount;
 
-    }
     @Override
     public List<BankAccountDTO> bankAccountList() {
         List<BankAccount> bankAccounts = bankAccountRepository.findAll();

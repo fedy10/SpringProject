@@ -1,0 +1,68 @@
+<style>
+  .container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+</style>
+<div class="container mt-2">
+  <ng-container *ngIf="cutomers|async as listCustomers ;else failureOrLoding">
+    <div *ngIf="searchFormGroup"  class="col-md-6 offset-3" style="margin-bottom: 20px"> <!-- verifiaction qu'il n'est pas de type indifinie -->
+      <form [formGroup]="searchFormGroup" (ngSubmit)="handleSearchCustomers()" >
+        <div class="input-group">
+          <label class="input-group-text"> Search customer :</label>
+          <input type="text" formControlName="keyword" class="form-control"> <!-- le champs sera stoker dans la variable keyword-->
+          <button class="btn btn-info"><i class="bi bi-search"> </i></button>
+        </div>
+      </form>
+    </div>
+    <div class="card-header"> Liste of Customers</div>
+    <div class="card-body">
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th> ID</th> <th> Name </th> <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let c of cutomers| async">
+          <!--| async : il connait que c'est un observable et de que cutomers ce charge il fait l'observable-->
+          <td>{{c.id}}</td>
+          <td>{{c.name}}</td>
+          <td>{{c.email}}</td>
+          <td>
+            <button (click)="handleDeleteCustomer(c)" class="btn btn-danger"> <i class="bi bi-trash"></i> </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+
+  <ng-template #failureOrLoding>
+    <ng-container *ngIf="erroMessage;else loading" >
+      <div class="text-danger">
+        {{erroMessage}}
+      </div>
+    </ng-container>
+    <ng-template #loading>
+      <style>
+        .load{
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+        }
+      </style>
+      <div class="load">
+        <button class="btn btn-primary" type="button" disabled>
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Loading...
+        </button>
+      </div>
+    </ng-template>
+  </ng-template>
+
+</div>

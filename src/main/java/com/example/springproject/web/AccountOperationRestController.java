@@ -12,6 +12,8 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin("*")
+
 public class AccountOperationRestController {
     private AccountOperationServiceImpl accountOperationService;
 
@@ -29,20 +31,29 @@ public class AccountOperationRestController {
     }
     @PostMapping("/accounts/debit")
     public DebitDTO debit(@RequestBody DebitDTO debitDTO) throws BankAccountNotFoundException, BalanceNotSufficientException {
-        this.accountOperationService.debit(debitDTO.getAccountId(),debitDTO.getAmount(),debitDTO.getDescription());
+        String accountId=debitDTO.getAccountId();
+        System.out.println("éééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé");
+        System.out.println(accountId);
+        double amount=(double) debitDTO.getAmount();
+        String description=debitDTO.getDescription();
+        this.accountOperationService.debit(accountId,amount,description);
         return debitDTO;
     }
     @PostMapping("/accounts/credit")
     public CreditDTO credit(@RequestBody CreditDTO creditDTO) throws BankAccountNotFoundException {
-        this.accountOperationService.credit(creditDTO.getAccountId(),creditDTO.getAmount(),creditDTO.getDescription());
+        String accountId=creditDTO.getAccountId();
+        double amount=(double) creditDTO.getAmount();
+        String description=creditDTO.getDescription();
+        this.accountOperationService.credit(accountId,amount,description);
         return creditDTO;
     }
     @PostMapping("/accounts/transfer")
     public void transfer(@RequestBody TransferRequestDTO transferRequestDTO) throws BankAccountNotFoundException, BalanceNotSufficientException {
+        String accountSource=transferRequestDTO.getAccountSource();
+        String accountDestination=transferRequestDTO.getAccountDestination();
+        double amount=(double) transferRequestDTO.getAmount();
         this.accountOperationService.transfer(
-                transferRequestDTO.getAccountSource(),
-                transferRequestDTO.getAccountDestination(),
-                transferRequestDTO.getAmount());
+                accountSource,accountDestination,amount);
     }
 
 }

@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin("*")
 //@RequestMapping
 public class CustomerRestController {
     private CustomerServiceImpl customerService;
@@ -20,6 +21,10 @@ public class CustomerRestController {
     @GetMapping("/customers/{id}")
     public CustomerDTO getCustomer(@PathVariable(name = "id") Long customerId) throws CustomerNotFoundException {
         return customerService.getCustomer(customerId);
+    }
+    @GetMapping("customers/search")
+    public List<CustomerDTO> searchCustomers(@RequestParam (name = "keyword",defaultValue = "")String keyword){
+        return customerService.searchCustomers("%"+keyword+"%");
     }
     @PostMapping("/customers")
     public CustomerDTO saveCustomer(@RequestBody CustomerDTO request){
