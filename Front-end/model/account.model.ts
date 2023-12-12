@@ -13,3 +13,8 @@ export interface AccountOperation{
     type:string;
     description:string;
 }
+export interface Account{
+  id:string;
+  balance:number;
+  createdAt:Date;
+}

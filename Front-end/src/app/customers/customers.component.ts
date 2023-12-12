@@ -3,6 +3,7 @@ import {CutomerService} from "../services/cutomer.service";
 import {catchError, map, Observable, throwError} from "rxjs";
 import {Customer} from "../../../model/customer.model";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-customers',
@@ -14,7 +15,7 @@ export class CustomersComponent implements OnInit {
   //errorMessage:string|undefined;// variable null ( il faut faire la verfication toujours)
   erroMessage!:string;
   searchFormGroup:FormGroup |undefined;
-  constructor(private customerService:CutomerService , private formBuilder:FormBuilder) { }
+  constructor(private customerService:CutomerService , private formBuilder:FormBuilder ,private router:Router) { }
 
   ngOnInit(): void {
     this.searchFormGroup=this.formBuilder.group({
@@ -52,5 +53,13 @@ export class CustomersComponent implements OnInit {
         console.log(err);
       }
     })
+  }
+
+  handlCustomerAccounts(customer: Customer) {
+    this.router.navigateByUrl("/customer-accoutns/"+customer.id, {state:customer});
+  }
+
+  handleUpdateCustomer(c: Customer) {
+    this.router.navigateByUrl("/cutomser-update/"+c.id, {state:c});
   }
 }

@@ -6,7 +6,6 @@ import com.example.springproject.dtos.SavingBankAccountDTO;
 import com.example.springproject.entities.*;
 import com.example.springproject.exception.BankAccountNotFoundException;
 import com.example.springproject.exception.CustomerNotFoundException;
-import com.example.springproject.mappers.AccountOperationMapperImpl;
 import com.example.springproject.mappers.BankAccountMapperImpl;
 import com.example.springproject.reposiitories.AccountOperationRepository;
 import com.example.springproject.reposiitories.BankAccountRepository;
@@ -129,4 +128,12 @@ public class BankAccountServiceImpl implements BankAccountService {
         accountOperationRepository.deleteAllByBankAccount_Id(customerId);
         bankAccountRepository.deleteById(customerId);
     }
+    @Override
+    public  List<BankAccountDTO> ListAccountCustomer(long customerID) {
+        log.info("Geting accounts for this client");
+        List<BankAccount> bankAccounts =bankAccountRepository.findAllByCustomer_Id(customerID);
+        List<BankAccountDTO> bankAccountDTOS=bankAccounts.stream().map(bankAccount -> bankAccountMapper.formAccount(bankAccount)).collect(Collectors.toList());
+        return bankAccountDTOS;
+    }
+
 }

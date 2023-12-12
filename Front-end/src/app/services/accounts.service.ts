@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
-import {AccountDetails} from "../../../model/account.model";
+import {Account, AccountDetails} from "../../../model/account.model";
+import {Customer} from "../../../model/customer.model";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,9 @@ export class AccountsService {
 
   public getAccount(accountId : string, page : number, size : number):Observable<AccountDetails>{
     return this.http.get<AccountDetails>(environment.backendHost+"/accounts/"+accountId+"/pageOperations?page="+page+"&size="+size);
+  }
+  public getCustomerAccounts(customerID:number):Observable<Array<Account>>{
+    return this.http.get<Array<Account>>(environment.backendHost+"/customers/"+customerID+"/accounts")
   }
   public debit(accountId : string, amount : number, description:string){
     return this.http.post(environment.backendHost+"/accounts/debit",{accountId : accountId, amount : amount, description : description});

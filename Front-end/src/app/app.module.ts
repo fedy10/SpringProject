@@ -10,6 +10,9 @@ import { OperationComponent } from './operation/operation.component';
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import { NewCutomerComponent } from './new-cutomer/new-cutomer.component';
+import { CustomerAccountsComponent } from './customer-accounts/customer-accounts.component';
+import { CustomerUpdateComponent } from './customer-update/customer-update.component';
+import { AccountCutomerComponent } from './account-cutomer/account-cutomer.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { NewCutomerComponent } from './new-cutomer/new-cutomer.component';
     CustomersComponent,
     AccountsComponent,
     OperationComponent,
-    NewCutomerComponent
+    NewCutomerComponent,
+    CustomerAccountsComponent,
+    CustomerUpdateComponent,
+    AccountCutomerComponent
   ],
   imports: [
     BrowserModule,

@@ -30,4 +30,5 @@ public interface BankAccountService {
 
     void deleteBankAccount(String customerId);
 
+    List<BankAccountDTO> ListAccountCustomer(long customerID) ;;
 }

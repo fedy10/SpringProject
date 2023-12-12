@@ -14,8 +14,30 @@
               </button>
             </div>
           </form>
-          <ng-container *ngIf="accountObservable | async as accountDetails">
+          <ng-template #errorTemplate>
+            <ng-container *ngIf="errorMessage ; else loading">
+              <div class="text-danger"> {{errorMessage}}</div>
+            </ng-container>
+            <ng-template #loading>
+                <style>
+                  .load{
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                  }
+                </style>
+                <div class="load">
+                  <button class="btn btn-primary" type="button" disabled>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Loading...
+                  </button>
+                </div>
+              </ng-template>
+          </ng-template>
+          <ng-container *ngIf="accountObservable | async as accountDetails "> <!--else errorTemplate-->
             <div class="mb-2">
+              {{accountDetails|json}}
               <label>Account ID :</label>
               <label><strong>{{accountDetails.accountId}}</strong></label>
             </div>

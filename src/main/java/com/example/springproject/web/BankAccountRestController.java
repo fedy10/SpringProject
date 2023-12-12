@@ -25,6 +25,11 @@ public class BankAccountRestController {
     public BankAccountDTO getBankAccount(@PathVariable(name = "id") String accountId) throws BankAccountNotFoundException {
         return  bankAccountService.getBankAccount(accountId);
     }
+    @GetMapping("/customers/{id}/accounts")
+    public List<BankAccountDTO> GetAccounts(@PathVariable(name = "id") long customerID) {
+        return  bankAccountService.ListAccountCustomer(customerID);
+    }
+
     @PostMapping("/customers/{customerID}/save")
     public SavingBankAccountDTO saveSavingBankAccount(@RequestBody SavingBankAccountDTO request , @PathVariable (name = "customerID") Long customerID) throws CustomerNotFoundException {
         // Récupérer initialBalance et interestRate à partir de l'objet request

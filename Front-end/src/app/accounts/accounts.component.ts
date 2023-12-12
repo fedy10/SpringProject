@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {AccountsService} from "../services/accounts.service";
-import {Observable} from "rxjs";
+import {catchError, Observable, throwError} from "rxjs";
 import {AccountDetails} from "../../../model/account.model";
 
 @Component({
@@ -16,6 +16,7 @@ export class AccountsComponent implements OnInit {
   pageSize:number=5;
   accountObservable!:Observable<AccountDetails>
   operationFormGroup!:FormGroup;
+  errorMessage!:string;
   constructor(private form:FormBuilder ,private accountService:AccountsService) { }
 
   ngOnInit(): void {
@@ -32,7 +33,12 @@ export class AccountsComponent implements OnInit {
 
   handleSearchAccount() {
     let accoundId:string=this.accountFormGroup.value.accountId;
-    this.accountObservable=this.accountService.getAccount(accoundId,this.currentPage,this.pageSize);
+    this.accountObservable=this.accountService.getAccount(accoundId,this.currentPage,this.pageSize).pipe(
+      catchError(err => {
+        this.errorMessage=err.error.message;
+        return throwError(err);
+      })
+    );
   }
 
   gotoPage(page: number) {
@@ -51,6 +57,7 @@ export class AccountsComponent implements OnInit {
       this.accountService.debit(accountId,amout,description).subscribe({
         next:(data)=>{
           alert("Success Dabit");
+          this.operationFormGroup.reset();
           this.handleSearchAccount();
         },
         error:(err)=>{
@@ -61,6 +68,7 @@ export class AccountsComponent implements OnInit {
       this.accountService.credit(accountId,amout,description).subscribe({
         next:(data)=>{
           alert("Success Credit");
+          this.operationFormGroup.reset();
           this.handleSearchAccount();
         },
         error:(err)=>{
@@ -71,6 +79,7 @@ export class AccountsComponent implements OnInit {
       this.accountService.transfer(accountId,accountDestination,amout,description).subscribe({
         next:(data)=>{
           alert("Success Transfer");
+          this.operationFormGroup.reset();
           this.handleSearchAccount();
         },
         error:(err)=>{
@@ -78,5 +87,6 @@ export class AccountsComponent implements OnInit {
         }
       });
     }
+
   }
 }

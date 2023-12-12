@@ -1,7 +1,9 @@
 package com.example.springproject.web;
 
 
+import com.example.springproject.dtos.BankAccountDTO;
 import com.example.springproject.dtos.CustomerDTO;
+import com.example.springproject.exception.BankAccountNotFoundException;
 import com.example.springproject.exception.CustomerNotFoundException;
 import com.example.springproject.services.CustomerServiceImpl;
 import lombok.AllArgsConstructor;
@@ -40,4 +42,5 @@ public class CustomerRestController {
 
         customerService.deleteCustomer(id);
     }
+
 }

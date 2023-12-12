@@ -1,0 +1,67 @@
+<style>
+  .container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+</style>
+<div class="container mt-2">
+  <ng-container *ngIf="customerAccounts|async as listCustomers ;else failureOrLoding">
+    <div class="card-header"> Liste of Account for : {{customer|json}} </div>
+    <div class="card-body">
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th> ID</th> <th> BLANCE </th> <th> CREATE AT </th>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-container *ngIf="customerAccounts | async as accountDetails ">
+        <tr *ngFor="let c of accountDetails">
+          <!--| async : il connait que c'est un observable et de que cutomers ce charge il fait l'observable-->
+          <td>{{c.id}}</td>
+          <td>{{c.balance}}</td>
+          <td>{{c.createdAt | date : 'dd-MM-yyyy'}}</td>
+          <td>
+            <button (click)="handleDeleteCustomerAccount(c)" class="btn btn-danger"> <i class="bi bi-trash"></i> </button>
+          </td>
+          <td>
+            <button (click)="handleUpdateCustomerAccount(c)" class="btn btn-outline-info"> <i class="bi bi-pencil-square"></i> </button>
+          </td>
+          <td>
+            <button (click)="handlAccounts(c)" class="btn btn-outline-info"> <i class="bi bi-list-columns"></i> </button>
+          </td>
+        </tr>
+        </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+
+  <ng-template #failureOrLoding>
+    <ng-container *ngIf="erroMessage;else loading" >
+      <div class="text-danger">
+        {{erroMessage}}
+      </div>
+    </ng-container>
+    <ng-template #loading>
+      <style>
+        .load{
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+        }
+      </style>
+      <div class="load">
+        <button class="btn btn-primary" type="button" disabled>
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Loading...
+        </button>
+      </div>
+    </ng-template>
+  </ng-template>
+
+</div>
