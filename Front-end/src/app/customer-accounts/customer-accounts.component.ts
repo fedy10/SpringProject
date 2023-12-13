@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Customer} from "../../../model/customer.model";
 import {Account, AccountDetails} from "../../../model/account.model";
-import {catchError, Observable, throwError} from "rxjs";
+import {catchError, map, Observable, throwError} from "rxjs";
 import {CutomerService} from "../services/cutomer.service";
 import {AccountsService} from "../services/accounts.service";
 
@@ -35,14 +35,31 @@ customerAccounts!:Observable<Array<Account>>;
   }
 
   handleDeleteCustomerAccount(customerAccount: Account) {
+    let conf=confirm("Are you sure ?")
+    if(!conf) return;
+    this.accountsService.deleteAccount(customerAccount.id).subscribe({
+      next:resp=>{
+        this.customerAccounts=this.customerAccounts.pipe(
+          map(
+            data=>{
+              let index=data.indexOf(customerAccount);
+              data.slice(index,1)
+              return data;
+            })
+        );
+      },
+      error:err => {
+        console.log(err);
+      }
+    })
 
   }
 
   handleUpdateCustomerAccount(customerAccount: Account) {
-
+    this.router.navigateByUrl("/cutomser-update/"+customerAccount.id, {state:customerAccount});
   }
 
   handlAccounts(customerAccount: Account) {
-    this.router.navigateByUrl("/customer-accoutns/"+customerAccount.id, {state:customerAccount});
+    this.router.navigateByUrl("/account-customer/"+customerAccount.id, {state:customerAccount});
   }
 }

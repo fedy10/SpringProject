@@ -25,4 +25,10 @@ export class CutomerService {
   public deleteCustomer(id:number){
     return this.http.delete(environment.backendHost+"/customers/"+id)
   }
+  public getCustomer(customerID:number):Observable<Customer>{
+    return this.http.get<Customer>(environment.backendHost+"/customers/"+customerID)
+  }
+  public updateCustomer(customerID:number ,name:string,email:string):Observable<Customer>{
+    return this.http.put<Customer>(environment.backendHost+"/customers/"+customerID,{name,email})
+  }
 }

@@ -19,21 +19,21 @@
               <div class="text-danger"> {{errorMessage}}</div>
             </ng-container>
             <ng-template #loading>
-                <style>
-                  .load{
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%,-50%);
-                  }
-                </style>
-                <div class="load">
-                  <button class="btn btn-primary" type="button" disabled>
-                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                    Loading...
-                  </button>
-                </div>
-              </ng-template>
+              <style>
+                .load{
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%,-50%);
+                }
+              </style>
+              <div class="load">
+                <button class="btn btn-primary" type="button" disabled>
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  Loading...
+                </button>
+              </div>
+            </ng-template>
           </ng-template>
           <ng-container *ngIf="accountObservable | async as accountDetails "> <!--else errorTemplate-->
             <div class="mb-2">
@@ -85,7 +85,7 @@
               <input class="form-check-input" type="radio" formControlName="operationType" value="TRANSFER">
               <label class="form-check-label">TRANSFER:</label>
             </div>
-            <div class="mb-3" *ngIf="operationFormGroup.value.operationType=='TRANSFER'">
+            <div class="mb-3" *ngIf="operationFormGroup.value.operationType =='TRANSFER'">
               <label class="form-label">Account Destination :</label>
               <input type="text" formControlName="accountDestination" class="form-control">
             </div>

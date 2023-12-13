@@ -48,7 +48,7 @@ public class BankAccountRestController {
         return bankAccountService.updateSavingBankAccount(initialBalance,interestRate ,customerID);
     }
     @PostMapping("/customers/{customerID}/current")
-    public CurrentBankAccountDTO currentBankAcount(@RequestBody CurrentBankAccountDTO request , @PathVariable (name = "customerID") Long customerID) throws CustomerNotFoundException {
+    public CurrentBankAccountDTO saveCurrentBankAccount(@RequestBody CurrentBankAccountDTO request , @PathVariable (name = "customerID") Long customerID) throws CustomerNotFoundException {
         // Récupérer initialBalance et interestRate à partir de l'objet request
         double initialBalance = request.getBalance();
         double overDraft = request.getOverDraft();

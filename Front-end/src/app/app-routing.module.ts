@@ -5,6 +5,7 @@ import {AccountsComponent} from "./accounts/accounts.component";
 import {NewCutomerComponent} from "./new-cutomer/new-cutomer.component";
 import {CustomerUpdateComponent} from "./customer-update/customer-update.component";
 import {CustomerAccountsComponent} from "./customer-accounts/customer-accounts.component";
+import {AccountCutomerComponent} from "./account-cutomer/account-cutomer.component";
 
 const routes: Routes = [
   {path:"customers" ,component:CustomersComponent},
@@ -12,7 +13,7 @@ const routes: Routes = [
   {path:"new-customer",component:NewCutomerComponent},
   {path:"customer-accoutns/:id" ,component:CustomerAccountsComponent},
   {path:"cutomser-update/:id",component:CustomerUpdateComponent},
-  
+  {path:"account-customer/:id",component:AccountCutomerComponent},
 ];
 
 @NgModule({

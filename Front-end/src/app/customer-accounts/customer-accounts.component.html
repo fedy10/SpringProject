@@ -8,7 +8,7 @@
 </style>
 <div class="container mt-2">
   <ng-container *ngIf="customerAccounts|async as listCustomers ;else failureOrLoding">
-    <div class="card-header"> Liste of Account for : {{customer|json}} </div>
+    <div class="card-header"> Liste of Account for :<ng-container *ngIf="customer"> {{customer.name}}</ng-container> </div>
     <div class="card-body">
 
       <table class="table">
