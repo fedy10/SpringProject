@@ -717,3 +717,57 @@ com.example.springproject.exception.BalanceNotSufficientException: Balance not s
 2023-12-13T01:32:36.917+01:00  INFO 7668 --- [http-nio-8085-exec-6] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
 2023-12-13T01:32:38.849+01:00  WARN 7668 --- [http-nio-8085-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "96ac6947-50a4-4088-92e0-27517cffb7ee"]
 2023-12-13T01:32:38.857+01:00  WARN 7668 --- [http-nio-8085-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "96ac6947-50a4-4088-92e0-27517cffb7ee"]
+2023-12-13T01:33:45.162+01:00  INFO 7668 --- [http-nio-8085-exec-3] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:33:45.180+01:00  INFO 7668 --- [http-nio-8085-exec-7] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:34:53.495+01:00  INFO 7668 --- [http-nio-8085-exec-4] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:34:53.530+01:00  INFO 7668 --- [http-nio-8085-exec-10] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:37:08.992+01:00  INFO 7668 --- [http-nio-8085-exec-2] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:37:09.019+01:00  INFO 7668 --- [http-nio-8085-exec-6] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:37:10.080+01:00  WARN 7668 --- [http-nio-8085-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "96ac6947-50a4-4088-92e0-27517cffb7ee"]
+2023-12-13T01:37:10.086+01:00  WARN 7668 --- [http-nio-8085-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "96ac6947-50a4-4088-92e0-27517cffb7ee"]
+2023-12-13T01:37:11.864+01:00  INFO 7668 --- [http-nio-8085-exec-3] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:37:11.878+01:00  INFO 7668 --- [http-nio-8085-exec-7] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:37:16.893+01:00  INFO 7668 --- [http-nio-8085-exec-4] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:37:16.911+01:00  INFO 7668 --- [http-nio-8085-exec-10] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:37:18.732+01:00  WARN 7668 --- [http-nio-8085-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "96ac6947-50a4-4088-92e0-27517cffb7ee"]
+2023-12-13T01:37:18.740+01:00  WARN 7668 --- [http-nio-8085-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "96ac6947-50a4-4088-92e0-27517cffb7ee"]
+2023-12-13T01:37:21.270+01:00  INFO 7668 --- [http-nio-8085-exec-6] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:37:21.286+01:00  INFO 7668 --- [http-nio-8085-exec-9] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:38:52.036+01:00  INFO 7668 --- [http-nio-8085-exec-3] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:38:52.066+01:00  INFO 7668 --- [http-nio-8085-exec-7] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:39:11.147+01:00  INFO 7668 --- [http-nio-8085-exec-8] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:39:11.184+01:00  INFO 7668 --- [http-nio-8085-exec-4] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:40:10.213+01:00  INFO 7668 --- [http-nio-8085-exec-10] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:40:10.235+01:00  INFO 7668 --- [http-nio-8085-exec-1] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:41:33.730+01:00  INFO 7668 --- [http-nio-8085-exec-6] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:41:33.760+01:00  INFO 7668 --- [http-nio-8085-exec-9] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:42:11.182+01:00  INFO 7668 --- [http-nio-8085-exec-5] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:42:11.205+01:00  INFO 7668 --- [http-nio-8085-exec-3] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:42:24.883+01:00  WARN 7668 --- [http-nio-8085-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "96ac6947-50a4-4088-92e0-27517cffb7ee"]
+2023-12-13T01:42:24.888+01:00  WARN 7668 --- [http-nio-8085-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "96ac6947-50a4-4088-92e0-27517cffb7ee"]
+2023-12-13T01:42:27.180+01:00  INFO 7668 --- [http-nio-8085-exec-4] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:42:27.198+01:00  INFO 7668 --- [http-nio-8085-exec-10] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:43:07.666+01:00  INFO 7668 --- [http-nio-8085-exec-1] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:43:07.690+01:00  INFO 7668 --- [http-nio-8085-exec-2] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:43:14.888+01:00  WARN 7668 --- [http-nio-8085-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "96ac6947-50a4-4088-92e0-27517cffb7ee"]
+2023-12-13T01:43:14.907+01:00  WARN 7668 --- [http-nio-8085-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "96ac6947-50a4-4088-92e0-27517cffb7ee"]
+2023-12-13T01:43:17.145+01:00  INFO 7668 --- [http-nio-8085-exec-5] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:43:17.182+01:00  INFO 7668 --- [http-nio-8085-exec-3] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:43:27.180+01:00  INFO 7668 --- [http-nio-8085-exec-8] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:43:27.196+01:00  INFO 7668 --- [http-nio-8085-exec-4] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:45:19.517+01:00  INFO 7668 --- [http-nio-8085-exec-1] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:45:19.564+01:00  INFO 7668 --- [http-nio-8085-exec-2] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:45:30.568+01:00  INFO 7668 --- [http-nio-8085-exec-6] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:45:30.611+01:00  INFO 7668 --- [http-nio-8085-exec-9] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:45:39.394+01:00  INFO 7668 --- [http-nio-8085-exec-3] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:45:39.410+01:00  INFO 7668 --- [http-nio-8085-exec-7] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:48:59.388+01:00  INFO 7668 --- [http-nio-8085-exec-7] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:48:59.409+01:00  INFO 7668 --- [http-nio-8085-exec-8] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:49:42.864+01:00  WARN 7668 --- [http-nio-8085-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "96ac6947-50a4-4088-92e0-27517cffb7ee"]
+2023-12-13T01:49:42.871+01:00  WARN 7668 --- [http-nio-8085-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "96ac6947-50a4-4088-92e0-27517cffb7ee"]
+2023-12-13T01:49:48.127+01:00  INFO 7668 --- [http-nio-8085-exec-1] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:49:48.150+01:00  INFO 7668 --- [http-nio-8085-exec-2] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:50:02.809+01:00  WARN 7668 --- [http-nio-8085-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "96ac6947-50a4-4088-92e0-27517cffb7ee"]
+2023-12-13T01:50:02.815+01:00  WARN 7668 --- [http-nio-8085-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "96ac6947-50a4-4088-92e0-27517cffb7ee"]
+2023-12-13T01:50:05.654+01:00  INFO 7668 --- [http-nio-8085-exec-5] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
+2023-12-13T01:50:05.668+01:00  INFO 7668 --- [http-nio-8085-exec-3] c.e.s.services.BankAccountServiceImpl    : Geting accounts for this client
